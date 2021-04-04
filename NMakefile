@@ -1,0 +1,13 @@
+CC = cl
+L = link
+CFLAGS = /MD /nologo /W3 /DDLL_IMPORTS
+
+build:so_stdio.dll
+
+so_stdio.dll: so_stdio.obj
+	$(L) /nologo /dll /out:$@ $**
+
+so_stdio.obj: so_stdio.c
+	$(CC) $(CFLAGS) /c $**
+clean:
+	del /Q /F *.obj *.lib *.dll *.exe  *.exp

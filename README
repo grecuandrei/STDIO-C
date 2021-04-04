@@ -1,0 +1,46 @@
+			   Copyright @ 2021 Grecu Andrei-George 335CA, All rights reserved
+			   
+Tema 2 Bibliotecă stdio
+
+TEXT : https://ocw.cs.pub.ro/courses/so/teme/tema-2
+
+## Structura:
+
+    libso_stdio.c/so_stdio.c(UNIX/WIN32)
+    so_stdio.h
+    Makefile/NMakefile (UNIX/WIN32)
+
+## Tema
+
+    Implementarea minimala a bibliotecii stdio, care să permită lucrul cu fișiere.
+    In C-Linux si in WIN32 Api
+
+## Descriere:
+
+    Au fost implementate functiile so_fopen, so_fclose, so_fileno, so_fgetc, so_fputc,
+so_fread, so_fwrite, so_fseek, so_ftell, so_fflush, so_feof si so_ferror sa aiba aceiasi
+functionalitate ca cele din stdio.
+
+    Structura de fisier, SO_FILE (reprezentarea mea pentru FILE), contine flaguri ce semnaleaza
+posibile cazuri de eroare/eof/flush, tin pozitia curenta(marimea) a buferelor si buferele
+pentru citire si scriere.
+
+    Functiile implementeaza operatiile cunoscute de stdio si urmeaza enuntul temei.
+
+    Pentru o utilizarea adecvata a functii so_fputc in cazul flush-ului sau inchiderii fisierului,
+am utlizat un apel cu caracterul(int) -2, pentru a semnala eliberarea buferului de scriere.
+
+    Nu am observat o diferenta destul de majora intre implementarile pe cele doua SO-uri.
+
+## Teste
+
+    Am intalnit o problema pe parcursul rularii inputurilor in cazul testelor de random de citire si scriere
+    Din mai multe rulari cam undeva la 30% acestea trec, insa nu am reusit sa imi dau seama
+    ce se intampla cu restul (voi mai investiga).
+
+## Rulare
+
+    make -f Makefile.checker (varianta NMakefile pt WIN)
+    make -f Makefile (-;;-)
+    ./run_all.sh
+    ./_test/run_test.sh no (unde no = numarul testului 0-43)
